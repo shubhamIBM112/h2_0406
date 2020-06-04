@@ -1,0 +1,47 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h1>File Upload Status</h1>
+            <!--display error if any-->
+            <div class="alert alert-danger" role="alert" th:if="${!status}">
+                <strong>Error:</strong>
+                <span th:text="${message}"></span>
+            </div>
+
+            <!--display users list-->
+            <table class="table table-striped" th:if="${status}">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">environment</th>
+                    <th scope="col">vCPU</th>
+                    <th scope="col">memory</th>
+                    <th scope="col">location</th>
+                    <th scope="col">instanceType</th>
+                    <th scope="col">operatingSystem</th>
+                    <th scope="col">diskSpace</th>
+                    <th scope="col">commitmentType</th>
+                    <th scope="col">Cost</th>
+                    
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user, i : ${users}">
+                    <th scope="row" th:text="${i.index + 1}"></th>
+                    <td th:text="${user.environment}"></td>
+                    <td th:text="${user.vCPU}"></td>
+                    <td th:text="${user.memory}"></td>
+                     <td th:text="${user.location}"></td>
+                    <td th:text="${user.instanceType}"></td>
+                    <td th:text="${user.operatingSystem}"></td>
+                     <td th:text="${user.diskSpace}"></td>
+                    <td th:text="${user.commitmentType}"></td>
+                    <td th:text="${user.totalCost}"></td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
